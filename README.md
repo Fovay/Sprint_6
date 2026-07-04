@@ -27,7 +27,10 @@
 ---
 
 ## Структура проекта
+
+```
 Sprint_6/
+├── allure-results/ # Результаты Allure
 ├── data/ # Тестовые данные
 │ ├── urls.py # URL-адреса
 │ ├── constants.py # Константы
@@ -49,6 +52,7 @@ Sprint_6/
 ├── requirements.txt # Зависимости
 ├── run_tests.py # Скрипт запуска
 └── README.md
+```
 
 ---
 
