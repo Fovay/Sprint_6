@@ -1,72 +1,62 @@
 import re
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from pages.base_page import BasePage
+from selenium.webdriver.support.wait import WebDriverWait
 from locators.order_page_locators import OrderPageLocators as Locators
 
 class OrderPage(BasePage):
     def input_first_name(self, first_name: str):
-        self.send_keys(Locators.first_name_input, first_name)
+        self.send_keys(Locators.FIRST_NAME_INPUT, first_name)
 
     def input_last_name(self, last_name: str):
-        self.send_keys(Locators.last_name_input, last_name)
+        self.send_keys(Locators.LAST_NAME_INPUT, last_name)
 
     def input_address(self, address: str):
-        self.send_keys(Locators.address_input, address)
+        self.send_keys(Locators.ADDRESS_INPUT, address)
 
     def choose_subway(self, subway_name: str):
-        self.click_element(Locators.subway_field)
-        button = self.find_element(Locators.subway_hint_button(subway_name))
+        self.click_element(Locators.SUBWAY_FIELD)
+        button = self.find_element(Locators.SUBWAY_HINT_BUTTON(subway_name))
         self.scroll_to_element(button)
         button.click()
 
     def input_telephone_number(self, telephone_number: str):
-        self.send_keys(Locators.telephone_number_field, telephone_number)
+        self.send_keys(Locators.TELEPHONE_NUMBER_FIELD, telephone_number)
 
     def go_next(self):
-        button = self.find_element(Locators.next_button)
-        self.scroll_to_element(button)
-        self.driver.execute_script("arguments[0].click();", button)
+        self.click_with_js(Locators.NEXT_BUTTON)
 
     def input_date(self, date: str):
-        self.send_keys(Locators.date_field, date) 
+        self.send_keys(Locators.DATE_FIELD, date)
 
     def choose_rental_period(self, option: int):
-        self.click_element(Locators.rental_period_field)
-        options = self.find_elements(Locators.rental_period_list)
+        self.click_element(Locators.RENTAL_PERIOD_FIELD)
+        options = self.find_elements(Locators.RENTAL_PERIOD_LIST)
         self.scroll_to_element(options[option])
         options[option].click()
 
     def choose_color(self, option: int):
-        colors = self.find_elements(Locators.color_checkboxes)
+        colors = self.find_elements(Locators.COLOR_CHECKBOXES)
         self.scroll_to_element(colors[option])
         colors[option].click()
 
     def input_comment(self, comment_text):
-        self.send_keys(Locators.comment_for_courier_field, comment_text)
+        self.send_keys(Locators.COMMENT_FOR_COURIER_FIELD, comment_text)
 
     def click_order(self):
-        button = self.find_element(Locators.order_button)
-        self.scroll_to_element(button)
-        self.driver.execute_script("arguments[0].click();", button)
+        self.click_with_js(Locators.ORDER_BUTTON)
 
     def click_accept_order(self):
-        button = self.find_element(Locators.accept_order_button)
-        self.scroll_to_element(button)
-        self.driver.execute_script("arguments[0].click();", button)
+        self.click_with_js(Locators.ACCEPT_ORDER_BUTTON)
 
     def get_order_number(self):
         wait = WebDriverWait(self.driver, 15)
-        wait.until(lambda driver: re.search(r'\d+',driver.find_element(*Locators.order_completed_info).text))
-        text = self.find_element(Locators.order_completed_info).text
+        wait.until(lambda driver: re.search(r'\d+', driver.find_element(*Locators.ORDER_COMPLETED_INFO).text))
+        text = self.find_element(Locators.ORDER_COMPLETED_INFO).text
         match = re.search(r'\d+', text)
         return match.group() if match else ""
 
     def click_go_to_status(self):
-        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(Locators.show_status_button))
-        button = self.find_element(Locators.show_status_button)
-        self.scroll_to_element(button)
-        self.driver.execute_script("arguments[0].click();", button)
+        self.click_with_js(Locators.SHOW_STATUS_BUTTON)
 
     def fill_user_data(self, data_set: dict):
         self.input_first_name(data_set['first_name'])

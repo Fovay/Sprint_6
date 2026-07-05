@@ -1,13 +1,16 @@
 from selenium.webdriver.common.by import By
 
 class HomePageLocators:
-    order_button_top = (By.XPATH, "//div[starts-with(@class, 'Header')]/button[text()='Заказать']")
-    order_button_bottom = (By.XPATH, "//div[starts-with(@class, 'Home')]//button[text()='Заказать']")
+    ORDER_BUTTON_TOP = (By.XPATH, "//div[contains(@class, 'Header')]//button[text()='Заказать']")
+    ORDER_BUTTON_BOTTOM = (By.XPATH, "//div[contains(@class, 'Home')]//button[text()='Заказать']")
 
-    question_pattern = "//div[@id='accordion__heading-{}']"
-    answer_pattern = "//div[@id='accordion__panel-{}']/p"
+    QUESTION_PATTERN = "//div[@id='accordion__heading-{}']"
+    ANSWER_PATTERN = "//div[@id='accordion__panel-{}']/p"
 
-    scooter_logo = (By.XPATH, "//img[@alt='Scooter']")
-    yandex_logo = (By.XPATH, "//a[contains(@class, 'Header_LogoYandex')]")
+    SCOOTER_LOGO = (By.XPATH, "//img[@alt='Scooter']")
+    YANDEX_LOGO = (By.XPATH, "//a[contains(@class, 'Header_LogoYandex')]")
+    YANDEX_LOGO_BY_IMG = (By.XPATH, "//img[@alt='Yandex']/parent::a")
+    YANDEX_LOGO_BY_HREF = (By.XPATH, "//a[contains(@href, 'yandex')]")
+    YANDEX_LOGO_FALLBACK = (By.XPATH, "//div[contains(@class, 'Header')]//a[not(contains(@class, 'Header_LogoScooter'))]")
 
-    cookie_accept_button = (By.XPATH, "//button[text()='да все привыкли']")
+    COOKIE_ACCEPT_BUTTON = (By.XPATH, "//button[text()='да все привыкли']")

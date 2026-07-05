@@ -1,8 +1,8 @@
 class Urls:
-    dzen_home_page = 'dzen.ru'
-    yandex_home_page = 'ya.ru'
-    yandex_captcha_page = 'yandex.ru'
+    DZEN_HOME_PAGE = 'dzen.ru'
+    YANDEX_HOME_PAGE = 'ya.ru'
+    YANDEX_CAPTCHA_PAGE = 'yandex.ru'
 
-    main_page = 'https://qa-scooter.praktikum-services.ru/'
-    order_page = 'https://qa-scooter.praktikum-services.ru/order'
-    order_status_page = 'https://qa-scooter.praktikum-services.ru/track'
+    MAIN_PAGE = 'https://qa-scooter.praktikum-services.ru/'
+    ORDER_PAGE = 'https://qa-scooter.praktikum-services.ru/order'
+    ORDER_STATUS_PAGE = 'https://qa-scooter.praktikum-services.ru/track'

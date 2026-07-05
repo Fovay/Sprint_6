@@ -8,10 +8,16 @@ class BasePage:
         self.driver = driver
 
     def find_element(self, locator, time=10):
-        return WebDriverWait(self.driver, time).until(EC.presence_of_element_located(locator),message=f"Can't find element by locator {locator}")
+        return WebDriverWait(self.driver, time).until(
+            EC.presence_of_element_located(locator),
+            message=f"Can't find element by locator {locator}"
+        )
 
     def find_elements(self, locator, time=10):
-        return WebDriverWait(self.driver, time).until(EC.presence_of_all_elements_located(locator),message=f"Can't find elements by locator {locator}")
+        return WebDriverWait(self.driver, time).until(
+            EC.presence_of_all_elements_located(locator),
+            message=f"Can't find elements by locator {locator}"
+        )
 
     def click_element(self, locator, time=10):
         element = self.find_element(locator, time)
@@ -31,7 +37,7 @@ class BasePage:
 
     def go_to_site(self, url=None):
         if url is None:
-            url = Urls.main_page
+            url = Urls.MAIN_PAGE
         self.driver.get(url)
 
     def get_current_url(self):
@@ -46,14 +52,23 @@ class BasePage:
 
     def wait_for_page_load(self, timeout=10):
         WebDriverWait(self.driver, timeout).until(lambda d: d.current_url != "about:blank")
-        
-    def click_with_js(self, locator, time=10):
-        element = self.find_element(locator, time)
-        self.scroll_to_element(element)
-        self.driver.execute_script("arguments[0].click();", element)
 
     def is_element_displayed(self, locator, time=5):
         try:
             return self.find_element(locator, time).is_displayed()
         except TimeoutException:
             return False
+
+    def wait_for_number_of_windows(self, count, time=10):
+        WebDriverWait(self.driver, time).until(EC.number_of_windows_to_be(count))
+
+    def get_current_window_handle(self):
+        return self.driver.current_window_handle
+
+    def get_window_handles(self):
+        return self.driver.window_handles
+
+    def click_with_js(self, locator, time=10):
+        element = self.find_element(locator, time)
+        self.scroll_to_element(element)
+        self.driver.execute_script("arguments[0].click();", element)
