@@ -3,6 +3,7 @@
 ## Описание проекта
 
 Проект содержит автотесты для учебного сервиса «Яндекс.Самокат» (https://qa-scooter.praktikum-services.ru/).
+
 Тестирование выполнено с использованием **Selenium** и **Python (pytest)** с применением паттерна **Page Object Model**.
 
 ---
@@ -27,11 +28,13 @@
 ---
 
 ## Структура проекта
+
+```
 Sprint_6/
+├── allure-results/ # Результаты Allure
 ├── data/ # Тестовые данные
 │ ├── urls.py # URL-адреса
 │ ├── constants.py # Константы
-│ ├── messages.py # Текстовые сообщения
 │ └── test_data.py # Данные для тестов
 ├── locators/ # Локаторы элементов
 │ ├── home_page_locators.py
@@ -49,6 +52,7 @@ Sprint_6/
 ├── requirements.txt # Зависимости
 ├── run_tests.py # Скрипт запуска
 └── README.md
+```
 
 ---
 
