@@ -1,1 +1,0 @@
-{"uuid": "e620bd9d-a36f-4bcc-b36d-b685d499dea5", "children": ["993f8693-7218-49f0-a5ad-c19e666d221b"], "befores": [{"name": "home_page", "status": "passed", "steps": [{"name": "Принять cookies", "status": "passed", "start": 1783223101998, "stop": 1783223102098}], "start": 1783223101998, "stop": 1783223102098}], "start": 1783223101998, "stop": 1783223102121}
